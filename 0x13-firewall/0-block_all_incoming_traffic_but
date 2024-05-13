@@ -1,0 +1,40 @@
+#to check status of ufw
+sudo ufw status
+output: status was inactive
+
+#making sure IPv6 is enabled
+sudo nano /etc/default/ufw
+output: IPv6=yes
+
+# setting up default policies ,that is denying incoming connections and allowinf all outgoing connections.
+
+sudo ufw default deny incoming
+output: Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+
+sudo ufw default allow outgoing
+output:Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+
+# checking which profiles are currently registered in UFW
+sudo ufw app list
+output:Available applications:
+  Nginx Full
+  Nginx HTTP
+  Nginx HTTPS
+  OpenSSH
+
+#enabling the OpenSSH application profile
+sudo ufw allow OpenSSH
+output:Rules updated
+Rules updated (v6)
+
+# enabling https ssl 443
+sudo ufw allow 443
+output:Rules updated
+Rules updated (v6)
+
+# enabling http 80
+sudo ufw allow 80
+output:Rules updated
+Rules updated (v6)
